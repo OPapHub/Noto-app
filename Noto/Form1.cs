@@ -7,6 +7,10 @@ namespace Noto
         private readonly NotoDBContext _db;
         private DataTable dataTable;
         private Note currentNote;
+        private Color whiteBackColor = Color.WhiteSmoke;
+        private Color whiteTextBoxColor = Color.White;
+        private Color blackBackColor = Color.FromArgb(40, 40, 40);
+        private Color blackTextBoxColor = Color.FromArgb(32, 32, 32);
 
 
         public NoteForm()
@@ -18,6 +22,7 @@ namespace Noto
         //Form load handler
         private void NoteForm_Load(object sender, EventArgs e)
         {
+            DarkMode(true);
             var notes = getNotes();
 
             //Configuration of the note table
@@ -137,6 +142,36 @@ namespace Noto
 
         }
 
+        private void DarkMode(bool darkMode)
+        {
+            if (darkMode)
+            {
+                titleTextBox.BackColor = blackTextBoxColor;
+                titleTextBox.ForeColor = Color.White;
+                noteTextBox.BackColor = blackTextBoxColor;
+                noteTextBox.ForeColor = Color.White;
+                PagesTable.BackgroundColor = blackBackColor;
+                PagesTable.DefaultCellStyle.BackColor = blackBackColor;
+                PagesTable.DefaultCellStyle.ForeColor = Color.White;
+                newNote.BackColor = blackBackColor;
+                DeleteBtn.BackColor = blackBackColor;
+                this.BackColor = blackBackColor;
+            }
+            else
+            {
+                titleTextBox.BackColor = whiteTextBoxColor;
+                titleTextBox.ForeColor = Color.Black;
+                noteTextBox.BackColor = whiteTextBoxColor;
+                noteTextBox.ForeColor = Color.Black;
+                PagesTable.BackgroundColor = whiteBackColor;
+                PagesTable.DefaultCellStyle.BackColor = whiteBackColor;
+                PagesTable.DefaultCellStyle.ForeColor = Color.Black;
+                newNote.BackColor = whiteBackColor;
+                DeleteBtn.BackColor = whiteBackColor;
+                this.BackColor = whiteBackColor;
+            }
+        }
+
         //Save note in database
         private void saveNote()
         {
@@ -198,5 +233,16 @@ namespace Noto
             return note.Id;
         }
 
+        private void DarkModeToggleButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DarkModeToggleButton.Checked)
+            {
+                DarkMode(true);
+            }
+            else
+            {
+                DarkMode(false);
+            }
+        }
     }
 }

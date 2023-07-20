@@ -1,5 +1,6 @@
 ﻿namespace Noto
 {
+    //Note Model
     class Note
     {
         public int Id { get; set; }
