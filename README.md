@@ -8,6 +8,7 @@ Noto-app is a desctop application designed to help users manage their notes and 
 - **Note editing**: Edit your previoues notes.
 - **Note delition**: Delete your notes.
 - **Main note**: Main note with name "Quick notes", for convinience of starting your app, write some notes and go on with your day (Note can`t be deleted).
+- **DarkMode**: Ability to switch between dark and white mode using simple toggle switch button.
 
 ## Installation
 
