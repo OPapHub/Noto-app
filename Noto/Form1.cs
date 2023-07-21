@@ -200,7 +200,8 @@ namespace Noto
                 .FirstOrDefault()?.Name;
             if (lastUnt != null)
             {
-                return lastUnt[lastUnt.Length - 2] + 1;
+                int n = Convert.ToInt32(lastUnt.Substring(8));
+                return n + 1;
             }
             else
             {

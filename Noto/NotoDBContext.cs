@@ -12,7 +12,7 @@ namespace Noto
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // "DefaultConnection" - connection string name
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["LocalConnection"].ConnectionString);
         }
     }
 }
