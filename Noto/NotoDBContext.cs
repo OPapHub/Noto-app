@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Configuration;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Pomelo.EntityFrameworkCore.MySql.Internal;
 
 namespace Noto
 {
@@ -7,12 +9,21 @@ namespace Noto
     {
         //Tables in database
         public DbSet<Note> Notes { get; set; }
-        
+
         //Method for connecting to a database with specified connection string name on configuration
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            string connectionStringName = "DefaultConnection";
+            string connectionString = ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
             // "DefaultConnection" - connection string name
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["LocalConnection"].ConnectionString);
+            if (connectionStringName == "LocalConnection")
+            {
+                optionsBuilder.UseSqlServer(connectionString);
+            }
+            else if (connectionStringName == "DefaultConnection")
+            {
+                optionsBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(5, 5, 62)));
+            }
         }
     }
 }
