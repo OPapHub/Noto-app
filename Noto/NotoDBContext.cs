@@ -13,7 +13,7 @@ namespace Noto
         //Method for connecting to a database with specified connection string name on configuration
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionStringName = "DefaultConnection";
+            string connectionStringName = "LocalConnection";
             string connectionString = ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
             // "DefaultConnection" - connection string name
             if (connectionStringName == "LocalConnection")

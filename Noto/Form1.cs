@@ -25,6 +25,13 @@ namespace Noto
             DarkMode(true);
             var notes = getNotes();
 
+            //Initialize first undeleatable Note with ID 1 if there are no notes in db
+            if(notes is null)
+            {
+                updateNotes(new Note() { Name = "Quick Note" });
+                notes = getNotes();
+            }
+
             //Configuration of the note table
             dataTable = new DataTable();
             dataTable.Columns.Add("Id", typeof(int));
